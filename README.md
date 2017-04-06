@@ -26,14 +26,14 @@ WebDriver 如果只是单机，不需要启动服务器；事先下载准备好c
     driver = new ChromeDriver();
 
 Locating element(s) with findElement/findElements
-    driver.findElement(By.tagName(...))
-    By.linkText(...)
-    By.partialLinkText(...)
-    By.cssSelector(...)
-    By.xpath(...)
-    By.id(...)
-    By.name(...)
-    By.className(..)
+* driver.findElement(By.tagName(...))
+* By.linkText(...)
+* By.partialLinkText(...)
+* By.cssSelector(...)
+* By.xpath(...)
+* By.id(...)
+* By.name(...)
+* By.className(..)
 
 cssSelector
 
