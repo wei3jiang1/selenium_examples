@@ -84,5 +84,14 @@ Action
 * builder.doubleClick(message).build.perform();
 * builder.dragAndDrop(source, target).perform();
 
-asf
-
+js Executor
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    String title = (String) js.executeScript("return document.title");
+    assertEquals("Google", title);
+    
+    long links = (Long) js.executeScript("var links = document.getEelementsByTagName('A'); return links.length");
+    assertEquals(42, links);
+    
+    driver.close();
+    
+afsda
