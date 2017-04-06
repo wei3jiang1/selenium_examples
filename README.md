@@ -94,4 +94,18 @@ js Executor
     
     driver.close();
     
-afsda
+Screenshots
+    File srcFile = ((TakesScreenshot)driver).getScreenshotAs(Output.FILE);
+    FileUtils.copyFile(srcFile, new File("c:\\tmp\\main_page.png"));
+
+Maximize the browser window
+    driver.manage().window().maximize();
+    
+Drop Down
+    Select make = new Select(driver.findElement(By.name("make")));
+    assertFalse(make.isMultiple());
+    assertEquals(4, make.getOptions.size());
+    
+    make.selectByVisibleText("Honda");
+    assertEquals("Honda", make.getFirstSelectedOption().getText());
+  
