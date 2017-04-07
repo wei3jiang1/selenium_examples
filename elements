@@ -1,0 +1,39 @@
+API
+* getText()
+* getAttribute("align")
+* getCssValue("width")
+
+Action
+* Actions builder = new Actions(driver);
+* builder.click(tableRows.get(1)).keyDown(Keys.CONTROL).click(tableRows.get(3)).keyUp(Keys.CONTROL).build().perform();
+* builder.doubleClick(message).build.perform();
+* builder.dragAndDrop(source, target).perform();
+
+js Executor
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    String title = (String) js.executeScript("return document.title");
+    assertEquals("Google", title);
+    
+    long links = (Long) js.executeScript("var links = document.getEelementsByTagName('A'); return links.length");
+    assertEquals(42, links);
+    
+    driver.close();
+    
+Screenshots
+    File srcFile = ((TakesScreenshot)driver).getScreenshotAs(Output.FILE);
+    FileUtils.copyFile(srcFile, new File("c:\\tmp\\main_page.png"));
+
+Maximize the browser window
+    driver.manage().window().maximize();
+    
+Drop Down
+    Select make = new Select(driver.findElement(By.name("make")));
+    assertFalse(make.isMultiple());
+    assertEquals(4, make.getOptions.size());
+    
+    make.selectByVisibleText("Honda");
+    assertEquals("Honda", make.getFirstSelectedOption().getText());
+
+RadioButton/Checkbox
+    if (!petrol.isSelected()) petrol.click();
+
