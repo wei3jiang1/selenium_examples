@@ -1,0 +1,44 @@
+#
+
+搜索元素时，等待10秒钟
+driver.manage().timeouts().implicitWait(10, TimeUnit.SECONDS);
+
+最多等待10秒钟
+WebDriverWait wait = new WebDriverWait(driver, 10);
+wait.until(ExpectedConditions.titleContains("selenium"));
+
+预设条件
+elementToBeClickable(By locator)
+elementToBeSelected(WbeElement element)
+presenceOfElementLocated(By locator)
+textToBePresentInElement(By locator, java.lang.String text)
+textToBePresentInElementValue(By locator, java.lang.String text)
+titleContains(java.lang.String title)
+
+自定义条件
+WebElement message = (new WebDriverWait(driver, 5))
+                     .until(new ExpectedCondition<WebElement>(){
+                       @Override
+                       public WebElement apply(WebDriver d) {
+                           return d.findElement(By.id("page4"));
+                       }});
+assertTrue(message.getText().contains("Nunc nibh tortor"));
+
+(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>()
+   {
+       public Boolean apply(WebDriver d) {
+           return d.findElement(By.id("page4")).isDisplayed();
+}});
+
+isElementPresent()
+private boolean isElementPresent(By by) {
+           try {
+               driver.findElement(by);
+               return true;
+           } catch (NoSuchElementException e) {
+               return false;
+           }
+}
+
+Switching windows
+
