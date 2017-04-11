@@ -1,4 +1,4 @@
-#
+# 控制
 
 搜索元素时，等待10秒钟
 driver.manage().timeouts().implicitWait(10, TimeUnit.SECONDS);
@@ -41,4 +41,41 @@ private boolean isElementPresent(By by) {
 }
 
 Switching windows
+  String parentWindowId = driver.getWindowHandle();
+  WebElement helpButton = driver.findElement(By.id("helpbutton"));
+  helpButton.click();
+  try {
+      driver.switchTo().window("HelpWindow");
+  } catch (NoSuchWindowException e) {
+      e.printStackTrace();
+  }
+  assertTrue(driver.getTitle().equals("Help"));
+  driver.close();
+  
+  dirver.swithTo().window(parentWindowId);
+  assertTrue(driver.getTitle().equals("Build my Car - Configuration"));
+  
+对话框
+  Alert alert = driver.switchTo().alert();
+  alert.accept(); //警告框
+  alert.dismiss(); //dialog
+  alert.sendKeys("Foo"); //输入框
+  
+Frame/IFrame
+  List<WebElement> frames = driver.findElements(By.tagName("frame"));
+  for(WebElement frame : frames) {
+           //switchTo().frame() also accepts frame elements apart from
+           //id, name or index
+           driver.switchTo().frame(frame);
+           if(driver.getPageSource().contains("This Frame doesn't have id or name")) {
+               assertTrue("Middle Frame Found",true);
+               break; }
+           else
+               driver.switchTo().defaultContent();
+  }
+  
+  
+  
+  
+  
 
