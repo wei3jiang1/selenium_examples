@@ -74,6 +74,19 @@ Frame/IFrame
                driver.switchTo().defaultContent();
   }
   
+  计算时间
+  long startTime = System.currentTimeMillis();
+  driver.get("...");
+  new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Calculate")));
+  long endTime = System.currentTimeMillis();
+  long totalTime = endTime - startTime;
+  
+  StopWatch pageLoad = new StopWatch();
+  pageLoad.start();
+  driver.get("...");
+  new WebDriverWait...;
+  pageLoad.stop();
+  System.out.println("..." + pageLoad.getTime() + "...");
   
   
   
